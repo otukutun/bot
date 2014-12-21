@@ -11,15 +11,15 @@ Chatroid.new do
     reply "Hi, i am a chatroid", event
   end
 
-  on_time :hour => 6, :min => 0, :sec => 0 do
-    tweet "Good morning!"
+  on_time hour: 7, min: 30, sec: 0 do
+    tweet "@otukutun おはようございます"
   end
 
-  on_time :hour => 0, :min => 0, :sec => 0 do
-    tweet "Good night!"
+  on_time hour: 0, min: 30, sec: 0 do
+    tweet "@otukutun おやすみなさい"
   end
 
-  on_time :day => [10, 20, 30], :hour => 12, :min => 0, :sec => 0 do
-    tweet "@otukutun How are you?"
+  on_time day: [10, 20, 30], hour: 12, min: 0, sec: 0 do
+    tweet "@otukutun 最近調子どう?"
   end
 end.run!
