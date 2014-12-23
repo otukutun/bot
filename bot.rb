@@ -28,5 +28,8 @@ streamclient.userstream do |status|
   contents = status[:text]
   id = status[:id]
   str = username + ":" + contents
-  puts str
+  if username == 'otukutun'
+    client.update("test#{Time.now}")
+    puts str
+  end
 end
