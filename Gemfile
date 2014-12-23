@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-gem 'chatroid'
+gem 'tweetstream'
 gem 'rest-client', '~> 1.7.2'
-#gem 'dnssd', '2.0'
 #gem 'irkit'
