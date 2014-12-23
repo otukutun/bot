@@ -1,23 +1,35 @@
 require 'tweetstream'
+require 'twitter'
 require './weather.rb'
 
 TweetStream.configure do |config|
-  config.consumer_key       = ENV["CONSUMER_KEY"]
-  config.consumer_secret    = ENV["CONSUMER_SECRET"]
-  config.oauth_token        = ENV["ACCESS_KEY"]
-  config.oauth_token_secret = ENV["ACCESS_KEY"]
+  config.consumer_key       = ENV['CONSUMER_KEY']
+  config.consumer_secret    = ENV['CONSUMER_SECRET']
+  config.oauth_token        = ENV['ACCESS_KEY']
+  config.oauth_token_secret = ENV['ACCESS_KEY']
   config.auth_method        = :oauth
 end
 
-streamclient = TweetStream::Client.new
-streamclient.userstream do |status|
-
-  username = status[:user][:screen_name]
-  contents = status[:text]
-  id = status[:id]
-  str = username + ":" + contents
-  puts str
+normalclient = Twitter::REST::Client.new do |config|
+  config.consumer_key        = ENV['CONSUMER_KEY']
+  config.consumer_secret     = ENV['CONSUMER_SECRET']
+  config.access_token        = ENV['ACCESS_KEY']
+  config.access_token_secret = ENV['ACCESS_KEY']
 end
+
+puts 'Configuration Success'
+
+normalclient.update('test')
+
+#streamclient = TweetStream::Client.new
+#streamclient.userstream do |status|
+#
+#  username = status[:user][:screen_name]
+#  contents = status[:text]
+#  id = status[:id]
+#  str = username + ':' + contents
+#  puts str
+#end
 
 #Chatroid.new do
 #  set :service,         "Twitter"

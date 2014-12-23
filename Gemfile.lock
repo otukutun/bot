@@ -62,3 +62,4 @@ PLATFORMS
 DEPENDENCIES
   rest-client (~> 1.7.2)
   tweetstream
+  twitter
