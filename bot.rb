@@ -22,3 +22,11 @@ puts 'Configuration Success'
 client.update("test#{Time.now}")
 
 puts 'Tweet success'
+
+streamclient.userstream do |status|
+  username = status[:user][:screen_name]
+  contents = status[:text]
+  id = status[:id]
+  str = username + ":" + contents
+  puts str
+end
