@@ -21,6 +21,7 @@ puts 'Configuration Success'
 
 client.update('test')
 
+puts 'Tweet success'
 #streamclient = TweetStream::Client.new
 #streamclient.userstream do |status|
 #
