@@ -9,10 +9,13 @@ Chatroid.new do
   set :access_secret,   ENV["ACCESS_SECRET"]
 
   on_reply do |event|
+    puts 'recieve reply'
     if event['user']['screen_name'] == 'otukutun'
       reply "Hi, i am a chatroid", event
+      puts 'reply to @otukutun'
     else
       reply "who are your?", event
+      puts 'reply to @other'
     end
   end
 
