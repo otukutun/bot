@@ -1,5 +1,5 @@
 require 'chatroid'
-require 'weather.rb'
+require './weather.rb'
 
 Chatroid.new do
   set :service,         "Twitter"
@@ -9,7 +9,11 @@ Chatroid.new do
   set :access_secret,   ENV["ACCESS_SECRET"]
 
   on_reply do |event|
-    reply "Hi, i am a chatroid", event
+    if event['user']['screen_name'] == 'otukutun'
+      reply "Hi, i am a chatroid", event
+    else
+      reply "who are your?", event
+    end
   end
 
   on_time hour: 7, min: 00, sec: 0 do
