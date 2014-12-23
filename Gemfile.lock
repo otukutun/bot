@@ -63,5 +63,6 @@ PLATFORMS
 
 DEPENDENCIES
   chatroid
+  dnssd (= 2.0)
   irkit
   rest-client (~> 1.7.2)
