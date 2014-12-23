@@ -1,4 +1,5 @@
-require "chatroid"
+require 'chatroid'
+require 'weather.rb'
 
 Chatroid.new do
   set :service,         "Twitter"
@@ -11,8 +12,9 @@ Chatroid.new do
     reply "Hi, i am a chatroid", event
   end
 
-  on_time hour: 7, min: 30, sec: 0 do
-    tweet "@otukutun おはようございます"
+  on_time hour: 7, min: 00, sec: 0 do
+    weather = Weather.new('jp','Tokyo')
+    tweet "@otukutun 今日の東京の天気は#{weather.cond}。最高気温は#{weather.temp_max}。最低気温は#{weather.temp_min}です。"
   end
 
   on_time hour: 0, min: 30, sec: 0 do
