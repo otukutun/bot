@@ -2,7 +2,7 @@ require 'tweetstream'
 require 'twitter'
 require './weather.rb'
 
-TweetStream.configure do |config|
+streamclient = TweetStream.configure do |config|
   config.consumer_key       = ENV['CONSUMER_KEY']
   config.consumer_secret    = ENV['CONSUMER_SECRET']
   config.oauth_token        = ENV['ACCESS_KEY']
@@ -10,7 +10,7 @@ TweetStream.configure do |config|
   config.auth_method        = :oauth
 end
 
-normalclient = Twitter::REST::Client.new do |config|
+client = Twitter::REST::Client.new do |config|
   config.consumer_key        = ENV['CONSUMER_KEY']
   config.consumer_secret     = ENV['CONSUMER_SECRET']
   config.access_token        = ENV['ACCESS_KEY']
@@ -19,7 +19,7 @@ end
 
 puts 'Configuration Success'
 
-normalclient.update('test')
+client.update('test')
 
 #streamclient = TweetStream::Client.new
 #streamclient.userstream do |status|
