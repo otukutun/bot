@@ -20,7 +20,7 @@ end
 puts 'Configuration Success'
 
 
-TweetStream::Client.new.sample do |status|
+TweetStream::Client.new.follow(90807562) do |status|
   # The status object is a special Hash with
   #   # method access to its keys.
   #client.update("test#{Time.now}")
