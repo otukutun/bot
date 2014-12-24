@@ -19,12 +19,11 @@ end
 
 puts 'Configuration Success'
 
-#streamclient = TweetStream::Client.new
 
 TweetStream::Client.new.sample do |status|
   # The status object is a special Hash with
   #   # method access to its keys.
-  client.update("test#{Time.now}")
+  #client.update("test#{Time.now}")
   puts "#{status.text}"
 end
 
