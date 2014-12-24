@@ -19,20 +19,20 @@ end
 
 puts 'Configuration Success'
 
-client = TweetStream::Client.new
-
-client.on_timeline_status  do |status|
-    puts status.text
-end
-
-client.userstream
-
-#TweetStream::Client.new.userstream do |status|
-#  # The status object is a special Hash with
-#  #   # method access to its keys.
-#  client.update("test#{Time.now}")
-#  puts "#{status.text}"
+#client = TweetStream::Client.new
+#
+#client.on_timeline_status  do |status|
+#    puts status.text
 #end
+#
+#client.userstream
+streamclient = TweetStream::Client.new
+streamclient.userstream do |status|
+  # The status object is a special Hash with
+  #   # method access to its keys.
+  puts "#{status.text}"
+  client.update("test#{Time.now}")
+end
 
 #client.update("test#{Time.now}")
 
