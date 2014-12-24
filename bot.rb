@@ -7,7 +7,7 @@ TweetStream.configure do |config|
   config.consumer_secret    = ENV['CONSUMER_SECRET']
   config.oauth_token        = ENV['ACCESS_KEY']
   config.oauth_token_secret = ENV['ACCESS_SECRET']
-  #config.auth_method        = :oauth
+  config.auth_method        = :oauth
 end
 
 client = Twitter::REST::Client.new do |config|
@@ -19,13 +19,20 @@ end
 
 puts 'Configuration Success'
 
+client = TweetStream::Client.new
 
-TweetStream::Client.new.userstream do |status|
-  # The status object is a special Hash with
-  #   # method access to its keys.
-  client.update("test#{Time.now}")
-  puts "#{status.text}"
+client.on_timeline_status  do |status|
+    puts status.text
 end
+
+client.userstream
+
+#TweetStream::Client.new.userstream do |status|
+#  # The status object is a special Hash with
+#  #   # method access to its keys.
+#  client.update("test#{Time.now}")
+#  puts "#{status.text}"
+#end
 
 #client.update("test#{Time.now}")
 
