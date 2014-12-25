@@ -30,8 +30,11 @@ streamclient = TweetStream::Client.new
 streamclient.userstream do |status|
   # The status object is a special Hash with
   #   # method access to its keys.
-  puts "#{status.text}"
-  client.update("test#{Time.now}")
+  username = status[:user][:screen_name]
+  if username == 'otukutun' && status.text.match(/(^@otukutun_bot\s)(.*)/)
+    puts "#{status.text}"
+    client.update("test#{Time.now}")
+  end
 end
 
 #client.update("test#{Time.now}")
