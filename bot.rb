@@ -19,13 +19,6 @@ end
 
 puts 'Configuration Success'
 
-#client = TweetStream::Client.new
-#
-#client.on_timeline_status  do |status|
-#    puts status.text
-#end
-#
-#client.userstream
 streamclient = TweetStream::Client.new
 streamclient.userstream do |status|
   # The status object is a special Hash with
@@ -36,26 +29,3 @@ streamclient.userstream do |status|
     client.update("test#{Time.now}")
   end
 end
-
-#client.update("test#{Time.now}")
-
-#streamclient.on_timeline_status  do |status|
-#    puts status.text
-#end
-
-#streamclient.userstream
-
-#puts 'Tweet success'
-
-
-#streamclient.userstream do |status|
-#  username = status[:user][:screen_name]
-#  contents = status[:text]
-#  id = status[:id]
-#  str = username + ":" + contents
-#  puts str
-#  #if username == 'otukutun'
-#  #  client.update("test#{Time.now}")
-#  #  puts str
-#  #end
-#end
