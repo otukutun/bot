@@ -1,5 +1,6 @@
 require 'tweetstream'
 require 'twitter'
+require 'docomoru'
 require './weather.rb'
 
 TweetStream.configure do |config|
@@ -26,6 +27,9 @@ streamclient.userstream do |status|
   username = status[:user][:screen_name]
   if username == 'otukutun' && status.text.match(/(^@otukutun_bot\s)(.*)/)
     puts "#{status.text}"
-    client.update("test#{Time.now}")
+    docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
+    response = docomo_client.create_dialogue($1)
+    
+    client.update(response.body['utt'])
   end
 end
