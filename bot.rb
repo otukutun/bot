@@ -28,7 +28,7 @@ streamclient.userstream do |status|
   if username == 'otukutun' && status.text.match(/(^@otukutun_bot\s)(.*)/)
     puts "#{status.text}"
     docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
-    response = docomo_client.create_dialogue($1)
+    response = docomo_client.create_dialogue("@otukutun #{$1}")
     
     client.update(response.body['utt'])
   end
