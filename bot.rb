@@ -30,8 +30,7 @@ streamclient.userstream do |status|
   p status[:user][:screen_name]
   puts "#{status.text}"
   dispacher = Dispacher.new(status)
-  tweet = dispacher.to_me
-  if tweet.present?
+  if tweet = dispacher.to_me
     puts tweet
     docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
     response = docomo_client.create_dialogue(tweet)
