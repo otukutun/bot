@@ -27,11 +27,11 @@ streamclient.userstream do |status|
   # The status object is a special Hash with
   #   # method access to its keys.
   p status
-  #puts "#{status.text}"
-  dispacher = Dispacher.new(status)
-  tweet = dispacher.to_me
-  docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
-  response = docomo_client.create_dialogue(tweet)
+  puts "#{status.text}"
+  #dispacher = Dispacher.new(status)
+  #tweet = dispacher.to_me
+  #docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
+  #response = docomo_client.create_dialogue(tweet)
 
-  client.update("@otukutun #{response.body['utt']}")
+  #client.update("@otukutun #{response.body['utt']}")
 end
