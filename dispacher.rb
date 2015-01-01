@@ -3,13 +3,8 @@ class Dispacher
     @status = status
   end
 
-  def to_me
-    #p '-------------'
-    #p @status[:user][:screen_name]
-    return false unless @status[:user][:screen_name] == 'otukutun'
-
+  def to_me?
     return $1 if @status.text.match(/(^@otukutun_bot\s)(.*)/)
-
     return false
   end
   

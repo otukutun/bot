@@ -27,10 +27,8 @@ streamclient.userstream do |status|
   # The status object is a special Hash with
   #   # method access to its keys.
   p status.id
-  p status[:user][:screen_name]
-  puts "#{status.text}"
   dispacher = Dispacher.new(status)
-  if tweet = dispacher.to_me
+  if status[:user][:screen_name] == 'otukutun' && tweet = dispacher.to_me?
     docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
     response = docomo_client.create_dialogue(tweet)
     p '----'
