@@ -5,7 +5,7 @@ class Dispacher
 
   def to_me?
     if @status.text.match(/(^@otukutun_bot\s)(.*)/)
-      return $1
+      return $2
     else
       return false
     end
