@@ -31,9 +31,10 @@ streamclient.userstream do |status|
   puts "#{status.text}"
   dispacher = Dispacher.new(status)
   if tweet = dispacher.to_me
-    puts tweet
     docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
     response = docomo_client.create_dialogue(tweet)
+    p '----'
+    p tweet
 
     client.update("@otukutun #{response.body['utt']}")
   end
