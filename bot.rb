@@ -26,11 +26,12 @@ streamclient = TweetStream::Client.new
 streamclient.userstream do |status|
   # The status object is a special Hash with
   #   # method access to its keys.
+  p status
   puts "#{status.text}"
   dispacher = Dispacher.new(status)
-  if tweet = dispacher.to_me.present?
-    docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
-    response = docomo_client.create_dialogue(tweet)
-    client.update("@otukutun #{response.body['utt']}")
-  end
+  tweet = dispacher.to_me
+  docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
+  response = docomo_client.create_dialogue(tweet)
+
+  client.update("@otukutun #{response.body['utt']}")
 end
