@@ -28,8 +28,9 @@ streamclient.userstream do |status|
   #   # method access to its keys.
   p status
   puts "#{status.text}"
-  #dispacher = Dispacher.new(status)
-  #tweet = dispacher.to_me
+  dispacher = Dispacher.new(status)
+  tweet = dispacher.to_me
+  puts tweet
   #docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
   #response = docomo_client.create_dialogue(tweet)
 
