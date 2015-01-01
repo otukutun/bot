@@ -4,6 +4,7 @@ class Dispacher
   end
 
   def to_me
+    p '-------------'
     p @status[:user][:screen_name]
     return false unless @status[:user][:screen_name] == 'otukutun'
 
