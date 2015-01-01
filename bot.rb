@@ -30,11 +30,9 @@ streamclient.userstream do |status|
   p status.screen_name
   p status
   dispacher = Dispacher.new(status)
-  if status[:screen_name] == 'otukutun' && tweet = dispacher.to_me?
+  if tweet = dispacher.to_me?
     docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
     response = docomo_client.create_dialogue(tweet)
-    p '----'
-    p tweet
 
     client.update("@otukutun #{response.body['utt']}")
   end
