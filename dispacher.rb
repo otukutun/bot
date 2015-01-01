@@ -5,9 +5,15 @@ class Dispacher
 
   def to_me?
     if @status.text.match(/(^@otukutun_bot\s)(.*)/)
-      return $2
+      return true
     else
       return false
+    end
+  end
+
+  def get_tweet
+    if md = @status.text.match(/(^@otukutun_bot\s)(.*)/)
+      return md[2]
     end
   end
 

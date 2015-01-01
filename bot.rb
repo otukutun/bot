@@ -28,10 +28,10 @@ streamclient.userstream do |status|
   #   # method access to its keys.
   p status.id
   dispacher = Dispacher.new(status)
-  if tweet = dispacher.to_me?
-    p tweet
+  if dispacher.to_me?
     docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
-    response = docomo_client.create_dialogue(tweet)
+    response = docomo_client.create_dialogue(dispacher.get_tweet)
+    p dispacher.get_tweet
 
     client.update("@otukutun #{response.body['utt']}", in_reply_to_status_id: status.id)
   end
