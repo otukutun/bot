@@ -35,7 +35,7 @@ streamclient.userstream do |status|
       if Weather.present? dispacher.get_tweet
         weather = Weather.new(dispacher.get_tweet)
         o_weather = OpenWeatherMap::City.new('Jp', weather.place)
-        response = "#{weather.jp_place}の天気は#{o_weather.cond}で、最高気温は#{o_weather.temp_max_celsius}、最低気温は#{o_weather.temp_min_celsius}です。"
+        response = "#{weather.jp_place}の天気は#{o_weather.cond_jp}で、最高気温は#{o_weather.temp_max_celsius}、最低気温は#{o_weather.temp_min_celsius}です。"
       end
     else 
       #when 'talk'
