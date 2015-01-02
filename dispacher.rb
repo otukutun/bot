@@ -17,4 +17,12 @@ class Dispacher
     end
   end
 
+  def tweet_type
+    tweet = get_tweet
+    return 'weather' if tweet.match(/(^.+)(の天気)/)
+    #return 'irkit'
+    #return 'trend'
+    return 'talk'
+  end
+
 end

@@ -29,10 +29,18 @@ streamclient.userstream do |status|
   p status.id
   dispacher = Dispacher.new(status)
   if dispacher.to_me?
-    docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
-    response = docomo_client.create_dialogue(dispacher.get_tweet)
-    p dispacher.get_tweet
+    response = ''
+    case dispacher.tweet_type
+    when 'weather'
+      weather = OpenWeatherMap.city.new('Jp', 'Tokyo')
+      response = "東京の天気は#{weather.cond}で、最高気温は#{weather.temp_max}、最低気温は#{weather.temp_min}です。"
+    else 
+      #when 'talk'
+      docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
+      response = docomo_client.create_dialogue(dispacher.get_tweet).body['utt']
+    end
+      p response
 
-    client.update("@otukutun #{response.body['utt']}", in_reply_to_status_id: status.id)
+    client.update("@otukutun #{response}", in_reply_to_status_id: status.id)
   end
 end
