@@ -32,7 +32,7 @@ streamclient.userstream do |status|
     response = ''
     case dispacher.tweet_type
     when 'weather'
-      weather = OpenWeatherMap.city.new('Jp', 'Tokyo')
+      weather = OpenWeatherMap::city.new('Jp', 'Tokyo')
       response = "東京の天気は#{weather.cond}で、最高気温は#{weather.temp_max}、最低気温は#{weather.temp_min}です。"
     else 
       #when 'talk'
