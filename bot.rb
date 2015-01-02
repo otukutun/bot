@@ -33,7 +33,7 @@ streamclient.userstream do |status|
     case dispacher.tweet_type
     when 'weather'
       weather = OpenWeatherMap::City.new('Jp', 'Tokyo')
-      response = "東京の天気は#{weather.cond}で、最高気温は#{weather.temp_max}、最低気温は#{weather.temp_min}です。"
+      response = "東京の天気は#{weather.cond}で、最高気温は#{weather.temp_max - 273.15}、最低気温は#{weather.temp_min - 273.15}です。"
     else 
       #when 'talk'
       docomo_client = Docomoru::Client.new(api_key: ENV['DOCOMO_API_KEY'])
